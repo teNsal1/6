@@ -38,3 +38,23 @@ class JsonFile(AbstractFile):
         elif isinstance(existing_data, dict):
             existing_data.update(data)
         self.write(existing_data)
+
+# txt
+class TxtFile(AbstractFile):
+    def __init__(self, file_path: str):
+        self.file_path = file_path
+
+    def read(self) -> str:
+        try:
+            with open(self.file_path, 'r', encoding='utf-8') as f:
+                return f.read()
+        except FileNotFoundError:
+            return ''
+        
+    def  write (self, data: str) -> None:
+        with open(self.file_path, 'w', encoding='utf-8') as f:
+            f.write(data)
+
+    def append(self, data: str) -> None:
+        with open(self.file_path, 'a', encoding='utf-8') as f:
+            f.write(data + '\n')
