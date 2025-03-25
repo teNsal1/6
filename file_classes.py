@@ -58,3 +58,25 @@ class TxtFile(AbstractFile):
     def append(self, data: str) -> None:
         with open(self.file_path, 'a', encoding='utf-8') as f:
             f.write(data + '\n')
+
+# Csv
+class CsvFile(AbstractFile):
+    def __init__(self, file_path: str):
+        self.file_path = file_path
+
+    def read(self) -> list[list[str]]:
+        try:
+            with open(self, file_path, 'r', encoding='utf-8') as f:
+                return list(csv.reader(f))
+        except FileNotFoundError:
+            return []
+        
+    def write(self, data: list[list[str]]) -> None:
+        with open(self.file_path 'w', encoding='utf-8', newline= '') as f:
+            writer = csv.writer(f)
+            writer.writerows(data)
+
+    def append(self, data: list[list[str]]) -> None:
+        with open(self.file_path, 'a', encoding='utf-8', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerows(data)
