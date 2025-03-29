@@ -5,7 +5,7 @@ if __name__ == "__main__":
     json_file = JsonFile("test.json")
     json_file.write({"name": "Alice", "age": 30})
     print(json_file.read())
-    json_file.append({{"city": "Moscow"}})
+    json_file.append({"city": "Moscow"})
     print(json_file.read())
 
     txt_file = TxtFile("test.txt")
