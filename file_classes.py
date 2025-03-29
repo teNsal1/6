@@ -72,7 +72,7 @@ class CsvFile(AbstractFile):
             return []
         
     def write(self, data: list[list[str]]) -> None:
-        with open(self.file_path 'w', encoding='utf-8', newline= '') as f:
+        with open(self.file_path 'w', encoding='utf-8', newline='') as f:
             writer = csv.writer(f)
             writer.writerows(data)
 
